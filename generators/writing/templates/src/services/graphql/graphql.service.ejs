@@ -2,7 +2,7 @@
 // Initializes the `<%= serviceName %>` service on path `/<%= path %>`. (Can be re-generated.)
 <%- tplTsOnly([`import { App } from '../../app.interface'${sc}`, '', '']) -%>
 <%- tplImports('createService', '@feathers-plus/graphql', 'req') %>
-<%- tplImports('merge', 'lodash.merge', 'req') %>
+<%- tplImports('{ merge }', 'lodash', 'req') %>
 <%- tplImports('{ mergeTypes }', 'merge-graphql-schemas') %>
 <%- tplImports('generatedSchema', './graphql.schemas') %>
 <%# -%>

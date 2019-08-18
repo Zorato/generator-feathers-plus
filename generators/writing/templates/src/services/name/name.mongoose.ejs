@@ -1,7 +1,7 @@
 
 /* <%- tplJsOrTs('eslint quotes: 0', 'tslint:disable:quotemark') %> */
 // Defines Mongoose model for service `<%= serviceName %>`. (Can be re-generated.)
-<%- tplImports('merge', 'lodash.merge', 'req') %>
+<%- tplImports('{ merge }', 'lodash', 'req') %>
 // <%- lintDisableNextLineUnused %>
 <%- tplJsOrTs(
   `const mongoose = require('mongoose')${sc}`,

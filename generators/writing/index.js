@@ -95,15 +95,13 @@ module.exports = function generatorWriting (generator, what) {
     this.sc = specs.options.semicolons ? ';' : '';
 
     // Abstract .js and .ts linting.
-    this.lintRule = this.isJs ? 'eslint ' : 'tslint:';
-    this.lintDisable = this.isJs ?  'eslint-disable' : 'tslint:disable';
-    this.lintDisableUnused = this.isJs ? 'eslint-disable no-unused-vars' : 'tslint:disable no-unused-variable';
-    this.lintDisableNextLine = this.isJs ?  'eslint-disable-next-line' : 'tslint:disable-next-line';
-    this.lintDisableNextLineUnused = this.isJs ?
-      'eslint-disable-next-line no-unused-vars' : 'tslint:disable-next-line:no-unused-variable';
-    this.lintDisableNextLineNoConsole = this.isJs ?
-      'eslint-disable-next-line no-console' : 'tslint:disable-next-line:no-console';
-    this.ruleQuoteDisable = this.isJs ? 'quotes: 0' : 'disable:quotemark';
+    this.lintRule =  'eslint ';
+    this.lintDisable = 'eslint-disable';
+    this.lintDisableUnused = 'eslint-disable no-unused-vars' ;
+    this.lintDisableNextLine = 'eslint-disable-next-line';
+    this.lintDisableNextLineUnused = 'eslint-disable-next-line no-unused-vars';
+    this.lintDisableNextLineNoConsole = 'eslint-disable-next-line no-console';
+    this.ruleQuoteDisable = 'quotes: 0';
 
     // Abstract .js and .ts statements.
     const { tplJsOrTs, tplJsOnly, tplTsOnly, tplImports, tplModuleExports, tplExport } = abstractTs(specs);

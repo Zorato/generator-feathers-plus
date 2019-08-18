@@ -1,4 +1,3 @@
-
 // Configure Feathers app. (Can be re-generated.)
 <%- insertFragment('preface') %>
 <%- tplImports('path', null, 'as') %>
@@ -58,23 +57,33 @@ app.configure(configuration())<%- sc %>
 ]) %>
 
 // Enable security, CORS, compression, favicon and body parsing
-app.use(helmet(
-  <%- insertFragment('helmet_config') %>
-))<%- sc %>
-app.use(cors(
-  <%- insertFragment('cors_config') %>
-))<%- sc %>
-app.use(compress(
-  <%- insertFragment('compress_config') %>
-))<%- sc %>
-app.use(express.json(
-  <%- insertFragment('json_config') %>
-))<%- sc %>
-app.use(express.urlencoded(
-  <%- insertFragment('urlencoded_config', [
-    '  { extended: true }'
-  ]) %>
-))<%- sc %>
+app.use(
+  helmet({
+    <%- insertFragment('helmet_config') %>
+  }),
+)<%- sc %>
+app.use(
+  cors({
+    <%- insertFragment('cors_config') %>
+  }),
+)<%- sc %>
+app.use(
+  compress({
+    <%- insertFragment('compress_config') %>
+  }),
+)<%- sc %>
+app.use(
+  express.json({
+    <%- insertFragment('json_config') %>
+  }),
+)<%- sc %>
+app.use(
+  express.urlencoded(
+    <%- insertFragment('urlencoded_config', [
+      '  { extended: true }'
+    ]) %>
+  ),
+)<%- sc %>
 <%- insertFragment('use_favicon', [
   '// Use favicon',
   `app.use(favicon(path.join(app.get('public'), 'favicon.ico')))${sc}`
@@ -90,25 +99,31 @@ app.use(express.urlencoded(
 <%# -%>
 <%# --- if-90a starts below. -%>
 <% if (hasProvider('rest')) { -%>
-app.configure(express.rest(
-  <%- insertFragment('express_rest') %>
-))<%- sc %>
+app.configure(
+  express.rest({
+    <%- insertFragment('express_rest') %>
+  }),
+)<%- sc %>
 <% } -%>
 <%# --- if-90a ends above. -%>
 <%# -%>
 <%# --- if-90b starts below. -%>
 <% if (hasProvider('socketio')) { -%>
-app.configure(socketio(
-  <%- insertFragment('express_socketio') %>
-))<%- sc %>
+app.configure(
+  socketio({
+    <%- insertFragment('express_socketio') %>
+  }),
+)<%- sc %>
 <% } -%>
 <%# --- if-90b ends above. -%>
 <%# -%>
 <%# --- if-90c starts below. -%>
 <% if (hasProvider('primus')) { -%>
-app.configure(primus(
-  <%- insertFragment('express_socketio', '  { transformer: \'websockets\' }') %>
-))<%- sc %>
+app.configure(
+  primus({
+    <%- insertFragment('express_socketio', '  { transformer: \'websockets\' }') %>
+  }),
+)<%- sc %>
 <% } -%>
 <%# --- if-90c ends above. -%>
 <%# --- forEach-3 starts below. -%>
